@@ -1,0 +1,17 @@
+[Unit]
+Description=OpenVPN Auth through mgmt interface
+#After=openvpn-server@.service
+# Start after OpenVPN server
+#Wants=openvpn-server@.service
+
+[Service]
+Type=forking
+PIDFile=/run/openvpn-auth-daemon.pid
+ExecStart=/usr/local/sbin/openvpn-auth-daemon.py start
+Environment=PYTHONUNBUFFERED=1
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
+

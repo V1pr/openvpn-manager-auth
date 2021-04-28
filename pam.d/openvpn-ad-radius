@@ -1,0 +1,15 @@
+# PAM configuration for OpenVPN
+
+# Read environment variables from /etc/environment and
+# /etc/security/pam_env.conf.
+auth       required     pam_env.so # [1]
+auth       required      pam_radius_auth.so
+
+# SecurID PAM Modul
+#auth       required     pam_securid.so
+
+# Radius auth
+#auth       required      pam_radius_auth.so debug
+#auth    [success=1 default=ignore]      pam_radius_auth.so nullok_secure
+#account    required     pam_securid.so
+
