@@ -10,6 +10,17 @@ management /etc/openvpn/server/.server-auth-socket unix
 management-client-auth
 ```
 
+For the OpenVPN client I've the following relevant lines:
+
+```
+# Don't cache credentials in virtual memory
+auth-nocache
+
+auth-user-pass
+auth-retry interact
+static-challenge "RSA Token" 1
+```
+
 You'll need to have a working PAM auth for this (example in pam.d). For pam-radius you'll need to set the server parameters in /etc/pam_radius_auth.conf - for Debian.
 
 System.d service is in system.d; mind the path ;) 
